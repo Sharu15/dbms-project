@@ -1,36 +1,39 @@
-<html>
-    <head>
-        {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> #}
-        
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </head>
+{% extends 'nav.html'%}
+{% block home %}
+{% load static %}
 
 
+<div class="container-fluid" style="margin-top: 100px;">
+    <div class="row">
+<div class="col-md-4"> </div>
+
+<div class="col-md-4">
+<div class="card shadow-lg border-dark">
+  <div class="card-body ">
+    <h6 class="card-subtitle mb-2 text-muted">Don't have an account? <a href="/signup/" class="card-link">Create Account</a></h6>
+<form action="/login/" method="POST">
+    {% csrf_token %}
+ <div class="form-group">
     
-    <body>
-        <div class="container">
-            
-            <h2>Login</h2>
-            <p>Please enter your username and password</p>
-        
-        <form method="post" action="{% url 'signin' %}" id="Login">
-            {% csrf_token %}
-            
-            <input type="text" name="username" placeholder="username"><br>           
-            <input type="password" name="password" placeholder="password"><br>
-            <input type="submit" value="login" />
-            <input type="hidden" name="next" value="{{ next }}" />
-            
-            
-            <p>Not a registered user <a href="{% url 'signup' %}">Signup</a></p>
-            
-        </form>
-    </div>
+        <label for="exampleFormControlInput1">UserName</label>
+    
+    <input type="text" name="username" placeholder="Username" class="form-control" required="true"></div>
+    <div class="form-group ">
+    <label for="exampleFormControlInput2">Password</label>
+    <input type="password" name="password" placeholder="Password" class="form-control" required="true"></div>
+    
+    <input type="submit" class="btn btn-success" value="Sign In">
+    
 
 
+</form>
+</div>
+</div>
 
+</div>
+
+
+{% endblock %}
 
 
 
